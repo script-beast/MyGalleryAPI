@@ -4,8 +4,9 @@ const express = require('express')
 const app = express();
 const Imgroute = require('./routes/imgs')
 const cors = require('cors')
+const PORT = process.env.PORT || 4001
 
-mongoose.connect('mongodb://localhost:27017/image', {
+mongoose.connect('mongodb+srv://fullimagesdb:images143@cluster0.hxc4m.mongodb.net/ImagesDB?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -20,6 +21,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/', Imgroute)
 
-app.listen(4001, () => {
+app.listen(PORT, () => {
     console.log('listening')
 })
